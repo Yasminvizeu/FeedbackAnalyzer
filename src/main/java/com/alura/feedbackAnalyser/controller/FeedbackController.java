@@ -1,7 +1,6 @@
 package com.alura.feedbackAnalyser.controller;
 
 
-import com.alura.feedbackAnalyser.model.Feedback;
 import com.alura.feedbackAnalyser.services.FeedbackService;
 import com.alura.feedbackAnalyser.services.LlmService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,15 +21,14 @@ public class FeedbackController {
     @Autowired
     private LlmService llmService;
 
-//    @PostMapping
-//    public Feedback classifyFeedback(@RequestBody String feedbackText) {
-//        return feedbackService.classifyFeedback(feedbackText);
-//    }
-
-    @PostMapping
-    public String analyzeFeedback(@RequestBody Map<String, String> payload) {
-        String feedback = payload.get("feedback");
-        return llmService.analyzeSentiment(feedback);
+    public FeedbackController(LlmService llmService) {
+        this.llmService = llmService;
     }
+
+    @PostMapping("/analyze")
+    public Map<String, Object> analyzeFeedback(@RequestBody String feedbackText) {
+        return llmService.processFeedback(feedbackText);
+    }
+
 
 }
