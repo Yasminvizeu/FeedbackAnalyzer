@@ -63,8 +63,11 @@ Configure o LM Studio para garantir que ele está rodando na porta 1234.
 ## Endpoints
 
 Análise de Feedback
-URL: /api/feedback/analyze
+
+URL: /api/feedbacks/analyze
+
 Método: POST
+
 Descrição: Analisa o feedback do usuário, classificando o sentimento e identificando as funcionalidades sugeridas.
 
 ### Exemplo de Requisição:
